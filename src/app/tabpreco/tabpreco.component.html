@@ -1,0 +1,77 @@
+<div>
+    <button mat-raised-button color="primary" (click)="btnGetData()">Buscar produtos</button>
+    <button mat-raised-button (click)="btnClearData()">Limpar</button>
+
+    <mat-card style="display: flex; justify-content: space-between;">
+
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="filtrar">
+        </mat-form-field>
+
+        <mat-paginator #paginator
+            [length]="length"
+            [pageSize]="pageSize"
+            [pageSizeOptions]="pageSizeOptions"
+            (page)="pageEvent = $event">
+        </mat-paginator>
+    </mat-card>
+    <BR>
+    <mat-card>
+        <mat-table [dataSource]="matDataSource" matSort matSortActive="codigo" matSortDirection="asc" matSortDisableClear>
+            <!-- Colunas da tabela -->
+            <ng-container matColumnDef="codigo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Código</mat-header-cell>
+            <mat-cell *matCellDef="let tabpreco">{{tabpreco.codigo}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="descricao" style="flex: 0 0 300px;">
+                <mat-header-cell *matHeaderCellDef mat-sort-header style="flex: 0 0 300px;">Descrição</mat-header-cell>
+                <mat-cell *matCellDef="let tabpreco" style="flex: 0 0 300px;" (click)="colClick('descricao', tabpreco.codigo)">{{tabpreco.descricao}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="alt">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Alt</mat-header-cell>
+                <mat-cell *matCellDef="let tabpreco">{{tabpreco.alt}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="larg">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Larg</mat-header-cell>
+                <mat-cell *matCellDef="let tabpreco">{{tabpreco.larg}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="prof">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Prof</mat-header-cell>
+                <mat-cell *matCellDef="let tabpreco">{{tabpreco.prof}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="volume">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Volume</mat-header-cell>
+                <mat-cell *matCellDef="let tabpreco">{{tabpreco.volume}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="peso">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Peso</mat-header-cell>
+                <mat-cell *matCellDef="let tabpreco">{{tabpreco.peso}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="cub">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Cub</mat-header-cell>
+                <mat-cell *matCellDef="let tabpreco">{{tabpreco.cub}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="preco">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Preço</mat-header-cell>
+                <mat-cell *matCellDef="let tabpreco">{{tabpreco.preco | currency: 'BRL' }}</mat-cell>
+                <mat-footer-cell *matFooterCellDef>{{getTotal() | currency: 'BRL'}}</mat-footer-cell>
+                
+            </ng-container>
+            <ng-container matColumnDef="img">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Prospecto</mat-header-cell>
+                <mat-cell *matCellDef="let tabpreco">{{tabpreco.img}}</mat-cell>
+            </ng-container>
+        
+            <!-- Linhas da tabela -->
+            <mat-header-row *matHeaderRowDef="displayedColumns" color="primary"></mat-header-row>
+            <mat-row *matRowDef="let row; columns:displayedColumns;" 
+            (click)="rowClick(row.codigo)"></mat-row>
+
+            <!-- Footer
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+            <mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row>
+            -->
+        </mat-table>
+    </mat-card>
+</div>
