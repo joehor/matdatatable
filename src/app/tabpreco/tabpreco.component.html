@@ -1,6 +1,10 @@
 <div>
-    <button mat-raised-button color="primary" (click)="btnGetData()">Buscar produtos</button>
-    <button mat-raised-button (click)="btnClearData()">Limpar</button>
+
+    <div style="margin: 10px;">
+        <button mat-raised-button color="primary" (click)="btnGetData()">Buscar produtos</button>
+        &nbsp;
+        <button mat-raised-button (click)="btnClearData()">Limpar</button>
+    </div>
 
     <mat-card style="display: flex; justify-content: space-between;">
 
@@ -23,33 +27,33 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header>Código</mat-header-cell>
             <mat-cell *matCellDef="let tabpreco">{{tabpreco.codigo}}</mat-cell>
             </ng-container>
-            <ng-container matColumnDef="descricao" style="flex: 0 0 300px;">
-                <mat-header-cell *matHeaderCellDef mat-sort-header style="flex: 0 0 300px;">Descrição</mat-header-cell>
-                <mat-cell *matCellDef="let tabpreco" style="flex: 0 0 300px;" (click)="colClick('descricao', tabpreco.codigo)">{{tabpreco.descricao}}</mat-cell>
+            <ng-container matColumnDef="descricao">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</mat-header-cell>
+                <mat-cell *matCellDef="let tabpreco" (click)="colClick('descricao', tabpreco.codigo)">{{tabpreco.descricao}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="alt">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Alt</mat-header-cell>
-                <mat-cell *matCellDef="let tabpreco">{{tabpreco.alt}}</mat-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Alt</mat-header-cell>
+                <mat-cell *matCellDef="let tabpreco" class="hidden-xs">{{tabpreco.alt}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="larg">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Larg</mat-header-cell>
-                <mat-cell *matCellDef="let tabpreco">{{tabpreco.larg}}</mat-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Larg</mat-header-cell>
+                <mat-cell *matCellDef="let tabpreco" class="hidden-xs">{{tabpreco.larg}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="prof">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Prof</mat-header-cell>
-                <mat-cell *matCellDef="let tabpreco">{{tabpreco.prof}}</mat-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Prof</mat-header-cell>
+                <mat-cell *matCellDef="let tabpreco" class="hidden-xs">{{tabpreco.prof}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="volume">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Volume</mat-header-cell>
-                <mat-cell *matCellDef="let tabpreco">{{tabpreco.volume}}</mat-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Volume</mat-header-cell>
+                <mat-cell *matCellDef="let tabpreco" class="hidden-xs">{{tabpreco.volume}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="peso">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Peso</mat-header-cell>
-                <mat-cell *matCellDef="let tabpreco">{{tabpreco.peso}}</mat-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Peso</mat-header-cell>
+                <mat-cell *matCellDef="let tabpreco" class="hidden-xs">{{tabpreco.peso}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="cub">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Cub</mat-header-cell>
-                <mat-cell *matCellDef="let tabpreco">{{tabpreco.cub}}</mat-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Cub</mat-header-cell>
+                <mat-cell *matCellDef="let tabpreco" class="hidden-xs">{{tabpreco.cub}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="preco">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Preço</mat-header-cell>
@@ -58,8 +62,8 @@
                 
             </ng-container>
             <ng-container matColumnDef="img">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Prospecto</mat-header-cell>
-                <mat-cell *matCellDef="let tabpreco">{{tabpreco.img}}</mat-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Prospecto</mat-header-cell>
+                <mat-cell *matCellDef="let tabpreco" class="hidden-xs">{{tabpreco.img}}</mat-cell>
             </ng-container>
         
             <!-- Linhas da tabela -->
