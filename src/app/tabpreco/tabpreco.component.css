@@ -1,4 +1,8 @@
-@media screen and (max-width: 767px) {
+.mat-cell {
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 600px) {
     .hidden-xs {
         display:none;
     }

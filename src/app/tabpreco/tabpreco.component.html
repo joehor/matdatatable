@@ -9,7 +9,7 @@
     <mat-card style="display: flex; justify-content: space-between;">
 
         <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="filtrar">
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pesquisar">
         </mat-form-field>
 
         <mat-paginator #paginator
@@ -18,9 +18,11 @@
             [pageSizeOptions]="pageSizeOptions"
             (page)="pageEvent = $event">
         </mat-paginator>
+
     </mat-card>
     <BR>
     <mat-card>
+
         <mat-table [dataSource]="matDataSource" matSort matSortActive="codigo" matSortDirection="asc" matSortDisableClear>
             <!-- Colunas da tabela -->
             <ng-container matColumnDef="codigo">
@@ -32,7 +34,7 @@
                 <mat-cell *matCellDef="let tabpreco" (click)="colClick('descricao', tabpreco.codigo)">{{tabpreco.descricao}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="alt">
-                <mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Alt</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs flex: 0 0 25% !important;">Alt</mat-header-cell>
                 <mat-cell *matCellDef="let tabpreco" class="hidden-xs">{{tabpreco.alt}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="larg">
@@ -58,12 +60,12 @@
             <ng-container matColumnDef="preco">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Preço</mat-header-cell>
                 <mat-cell *matCellDef="let tabpreco">{{tabpreco.preco | currency: 'BRL' }}</mat-cell>
-                <mat-footer-cell *matFooterCellDef>{{getTotal() | currency: 'BRL'}}</mat-footer-cell>
-                
+                <!--<mat-footer-cell *matFooterCellDef>{{getTotal() | currency: 'BRL'}}</mat-footer-cell>-->
+                <mat-footer-cell *matFooterCellDef="let tabpreco">{{tabpreco.sumBy('preco')}}</mat-footer-cell>
             </ng-container>
             <ng-container matColumnDef="img">
                 <mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Prospecto</mat-header-cell>
-                <mat-cell *matCellDef="let tabpreco" class="hidden-xs">{{tabpreco.img}}</mat-cell>
+                <mat-cell *matCellDef="let tabpreco" class="hidden-xs"><img src="http://servicos.kappesberg.com.br/vinhetas/jpg/{{tabpreco.img}}.jpg"/></mat-cell>
             </ng-container>
         
             <!-- Linhas da tabela -->
@@ -71,11 +73,6 @@
             <mat-row *matRowDef="let row; columns:displayedColumns;" 
             (click)="rowClick(row.codigo)"></mat-row>
 
-            <!-- Footer
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-            <mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row>
-            -->
         </mat-table>
     </mat-card>
 </div>

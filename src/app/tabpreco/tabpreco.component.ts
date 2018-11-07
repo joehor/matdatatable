@@ -19,24 +19,30 @@ export class TabprecoComponent implements OnInit {
   displayedColumns = ['codigo', 'descricao', 'alt', 'larg', 'prof', 'volume', 'peso', 'cub', 'preco', 'img'];
 
   // MatPaginator Inputs
-  length = 50;
-  pageSize = 10;
+  length = 0;
+  pageSize = 5;
   pageSizeOptions: number[] = [5, 10, 25, 100];
 
   // MatPaginator Output
   pageEvent: PageEvent;
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
-    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+    this.pageSizeOptions = setPageSizeOptionsInput
+                            .split(',')
+                            .map(str => +str);
   }
 
   // Mat Filter ...
   applyFilter(filterValue: string) {
-    this.matDataSource.filter = filterValue.trim().toLowerCase();
+    this.matDataSource.filter = filterValue
+                                  .trim()
+                                  .toLowerCase();
   }
 
   getTotal() {
-    return this.matDataSource.map(t => t.preco).reduce((acc, value) => acc + value, 0);
+    return this.matDataSource
+      .map(t => t.preco)
+      .reduce((acc, value) => acc + value, 0);
   }
 
   rowClick(row) {
@@ -62,6 +68,7 @@ export class TabprecoComponent implements OnInit {
         return;
        } else {
         this.matDataSource = new MatTableDataSource(res);
+        this.length = res.length;
         this.matDataSource.sort = this.sort;
         this.matDataSource.paginator = this.paginator;
        }
@@ -70,6 +77,7 @@ export class TabprecoComponent implements OnInit {
 
   btnClearData() {
     this.matDataSource = [];
+    this.length = 0;
     this.matDataSource.sort = this.sort;
     this.matDataSource.paginator = this.paginator;
 }
