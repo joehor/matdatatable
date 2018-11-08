@@ -24,13 +24,15 @@ import { FlxUiDatatableModule, FlxUiDataTable } from 'flx-ui-datatable';
 
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
+import { Page404Component } from './page404/page404.component';
 registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
     AppComponent,
     TabprecoComponent,
-    TabprecolinhasComponent
+    TabprecolinhasComponent,
+    Page404Component
     // MatTableDataSource
   ],
   imports: [

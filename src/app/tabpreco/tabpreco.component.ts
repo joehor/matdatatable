@@ -16,12 +16,15 @@ export class TabprecoComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   matDataSource;
-  displayedColumns = ['codigo', 'descricao', 'alt', 'larg', 'prof', 'volume', 'peso', 'cub', 'preco', 'img'];
+  arrDataSource; // TODO tem que ter um jeito de resolver isso ...
+  jsonDataSource;
+  displayedColumns: string[] = ['codigo', 'descricao', 'alt', 'larg', 'prof', 'volume', 'peso', 'cub', 'preco', 'img'];
+  // displayedColumns: string[] = ['codigo', 'preco'];
 
   // MatPaginator Inputs
   length = 0;
-  pageSize = 5;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
+  pageSize = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 50, 100, 9999];
 
   // MatPaginator Output
   pageEvent: PageEvent;
@@ -40,7 +43,7 @@ export class TabprecoComponent implements OnInit {
   }
 
   getTotal() {
-    return this.matDataSource
+    return this.arrDataSource
       .map(t => t.preco)
       .reduce((acc, value) => acc + value, 0);
   }
@@ -67,7 +70,9 @@ export class TabprecoComponent implements OnInit {
        if (!res) {
         return;
        } else {
+        this.arrDataSource = res;
         this.matDataSource = new MatTableDataSource(res);
+        this.jsonDataSource = JSON.stringify(this.matDataSource);
         this.length = res.length;
         this.matDataSource.sort = this.sort;
         this.matDataSource.paginator = this.paginator;

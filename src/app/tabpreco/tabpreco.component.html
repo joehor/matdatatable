@@ -8,71 +8,72 @@
 
     <mat-card style="display: flex; justify-content: space-between;">
 
-        <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pesquisar">
-        </mat-form-field>
+        <div style="display: flex">
+            <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pesquisar">
+            </mat-form-field>
 
-        <mat-paginator #paginator
-            [length]="length"
-            [pageSize]="pageSize"
-            [pageSizeOptions]="pageSizeOptions"
-            (page)="pageEvent = $event">
-        </mat-paginator>
+            <mat-paginator #paginator
+                [length]="length"
+                [pageSize]="pageSize"
+                [pageSizeOptions]="pageSizeOptions"
+                (page)="pageEvent = $event">
+            </mat-paginator>
+        </div>
 
     </mat-card>
     <BR>
     <mat-card>
 
-        <mat-table [dataSource]="matDataSource" matSort matSortActive="codigo" matSortDirection="asc" matSortDisableClear>
-            <!-- Colunas da tabela -->
+        <table mat-table [dataSource]="matDataSource" matSort>
             <ng-container matColumnDef="codigo">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Código</mat-header-cell>
-            <mat-cell *matCellDef="let tabpreco">{{tabpreco.codigo}}</mat-cell>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Código</th>
+                <td mat-cell *matCellDef="let row"> {{ row.codigo }} </td>
             </ng-container>
             <ng-container matColumnDef="descricao">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</mat-header-cell>
-                <mat-cell *matCellDef="let tabpreco" (click)="colClick('descricao', tabpreco.codigo)">{{tabpreco.descricao}}</mat-cell>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</th>
+                <td mat-cell *matCellDef="let row"> {{ row.descricao }} </td>
             </ng-container>
             <ng-container matColumnDef="alt">
-                <mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs flex: 0 0 25% !important;">Alt</mat-header-cell>
-                <mat-cell *matCellDef="let tabpreco" class="hidden-xs">{{tabpreco.alt}}</mat-cell>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Alt</th>
+                <td mat-cell *matCellDef="let row" class="hidden-xs"> {{ row.alt }} </td>
             </ng-container>
             <ng-container matColumnDef="larg">
-                <mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Larg</mat-header-cell>
-                <mat-cell *matCellDef="let tabpreco" class="hidden-xs">{{tabpreco.larg}}</mat-cell>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Larg.</th>
+                <td mat-cell *matCellDef="let row" class="hidden-xs"> {{ row.larg }} </td>
             </ng-container>
             <ng-container matColumnDef="prof">
-                <mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Prof</mat-header-cell>
-                <mat-cell *matCellDef="let tabpreco" class="hidden-xs">{{tabpreco.prof}}</mat-cell>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Prof.</th>
+                <td mat-cell *matCellDef="let row" class="hidden-xs"> {{ row.prof }} </td>
             </ng-container>
             <ng-container matColumnDef="volume">
-                <mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Volume</mat-header-cell>
-                <mat-cell *matCellDef="let tabpreco" class="hidden-xs">{{tabpreco.volume}}</mat-cell>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Vol.</th>
+                <td mat-cell *matCellDef="let row" class="hidden-xs"> {{ row.volume }} </td>
             </ng-container>
             <ng-container matColumnDef="peso">
-                <mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Peso</mat-header-cell>
-                <mat-cell *matCellDef="let tabpreco" class="hidden-xs">{{tabpreco.peso}}</mat-cell>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Peso</th>
+                <td mat-cell *matCellDef="let row" class="hidden-xs"> {{ row.peso }} </td>
             </ng-container>
             <ng-container matColumnDef="cub">
-                <mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Cub</mat-header-cell>
-                <mat-cell *matCellDef="let tabpreco" class="hidden-xs">{{tabpreco.cub}}</mat-cell>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Cub.</th>
+                <td mat-cell *matCellDef="let row" class="hidden-xs"> {{ row.cub }} </td>
             </ng-container>
             <ng-container matColumnDef="preco">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Preço</mat-header-cell>
-                <mat-cell *matCellDef="let tabpreco">{{tabpreco.preco | currency: 'BRL' }}</mat-cell>
-                <!--<mat-footer-cell *matFooterCellDef>{{getTotal() | currency: 'BRL'}}</mat-footer-cell>-->
-                <mat-footer-cell *matFooterCellDef="let tabpreco">{{tabpreco.sumBy('preco')}}</mat-footer-cell>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Preço</th>
+                <td mat-cell *matCellDef="let row"> {{ row.preco | currency: 'BRL' }} </td>
+                <!-- <td mat-footer-cell *matFooterCellDef> {{ getTotal() | currency: 'BRL' }} </td> -->
             </ng-container>
             <ng-container matColumnDef="img">
-                <mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Prospecto</mat-header-cell>
-                <mat-cell *matCellDef="let tabpreco" class="hidden-xs"><img src="http://servicos.kappesberg.com.br/vinhetas/jpg/{{tabpreco.img}}.jpg"/></mat-cell>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Prospecto</th>
+                <td mat-cell *matCellDef="let row" class="hidden-xs"> {{ row.img }} </td>
             </ng-container>
-        
-            <!-- Linhas da tabela -->
-            <mat-header-row *matHeaderRowDef="displayedColumns" color="primary"></mat-header-row>
-            <mat-row *matRowDef="let row; columns:displayedColumns;" 
-            (click)="rowClick(row.codigo)"></mat-row>
-
-        </mat-table>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <!-- <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr> -->
+        </table>
     </mat-card>
+</div>
+
+<div>
+    {{ jsonDataSource }}
 </div>
