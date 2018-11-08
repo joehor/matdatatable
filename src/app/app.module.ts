@@ -18,6 +18,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSliderModule } from '@angular/material';
+import { CdkTableModule } from '@angular/cdk/table';
+import { DataSource } from '@angular/cdk/collections';
 
 // FlexUiDataTable
 import { FlxUiDatatableModule, FlxUiDataTable } from 'flx-ui-datatable';
@@ -25,6 +28,7 @@ import { FlxUiDatatableModule, FlxUiDataTable } from 'flx-ui-datatable';
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
 import { Page404Component } from './page404/page404.component';
+import { ConsultaPadraoComponent } from './consulta-padrao/consulta-padrao.component';
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -32,7 +36,8 @@ registerLocaleData(ptBr);
     AppComponent,
     TabprecoComponent,
     TabprecolinhasComponent,
-    Page404Component
+    Page404Component,
+    ConsultaPadraoComponent
     // MatTableDataSource
   ],
   imports: [
@@ -41,8 +46,9 @@ registerLocaleData(ptBr);
     HttpClientModule,
     BrowserAnimationsModule,
     MatTableModule, MatSortModule, MatInputModule, MatCardModule, MatPaginatorModule, MatFormFieldModule, MatButtonModule,
-    MatGridListModule,
-    FlxUiDatatableModule
+    MatGridListModule, MatSliderModule,
+    FlxUiDatatableModule,
+    CdkTableModule
    ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
