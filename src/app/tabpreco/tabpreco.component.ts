@@ -5,7 +5,7 @@ import { PageEvent } from '@angular/material';
 import { MatPaginator } from '@angular/material/paginator';
 
 // Material
-import { MatSort, MatTableDataSource } from '@angular/material';
+import { MatSort, MatTableDataSource, MatPaginatorIntl } from '@angular/material';
 
 @Component({
   selector: 'app-tabpreco',
@@ -18,12 +18,15 @@ export class TabprecoComponent implements OnInit {
   matDataSource;
   arrDataSource; // TODO tem que ter um jeito de resolver isso ...
   jsonDataSource;
+  sumPreco;
+  cntRow = 0;
+  searchText = '';
   displayedColumns: string[] = ['codigo', 'descricao', 'alt', 'larg', 'prof', 'volume', 'peso', 'cub', 'preco', 'img'];
   // displayedColumns: string[] = ['codigo', 'preco'];
 
   // MatPaginator Inputs
   length = 0;
-  pageSize = 10;
+  pageSize = 5;
   pageSizeOptions: number[] = [5, 10, 25, 50, 100, 9999];
 
   // MatPaginator Output
@@ -43,13 +46,25 @@ export class TabprecoComponent implements OnInit {
   }
 
   getTotal() {
-    return this.arrDataSource
+    console.log('Calculando o subtotal...');
+    this.sumPreco = this.arrDataSource
       .map(t => t.preco)
       .reduce((acc, value) => acc + value, 0);
+  /*
+   console.log(this.arrDataSource);
+   if (this.arrDataSource === 'undefined') {
+      return this.arrDataSource
+      .map()
+      .reduce((acc, value) => acc.preco + value.preco, 0);
+   } else {
+     return 0;
+   }
+   */
   }
 
   rowClick(row) {
     alert(row);
+    console.log('sumPreco: ' + this.sumPreco);
   }
 
   colClick(col, codigo) {
@@ -71,11 +86,15 @@ export class TabprecoComponent implements OnInit {
         return;
        } else {
         this.arrDataSource = res;
+        this.cntRow = res.length;
         this.matDataSource = new MatTableDataSource(res);
-        this.jsonDataSource = JSON.stringify(this.matDataSource);
+        // this.jsonDataSource = JSON.stringify(this.matDataSource);
         this.length = res.length;
         this.matDataSource.sort = this.sort;
         this.matDataSource.paginator = this.paginator;
+
+        // chama o totalizador ...
+        this.getTotal();
        }
      });
   }
@@ -85,7 +104,13 @@ export class TabprecoComponent implements OnInit {
     this.length = 0;
     this.matDataSource.sort = this.sort;
     this.matDataSource.paginator = this.paginator;
-}
+  }
+
+  btnSearchClear() {
+    console.log('Limpando a busca...');
+    this.searchText = '';
+    this.applyFilter('');
+  }
 
 }
 
