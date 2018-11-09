@@ -16,5 +16,15 @@ tr.mat-footer-row {
     }
 }
 
+.hide {
+    display: none;
+}
+
+.cdk-column-loading {
+    align-content: center;
+    justify-content: center;
+    font-style: italic;
+}
+
 /*  TESTES   */
 

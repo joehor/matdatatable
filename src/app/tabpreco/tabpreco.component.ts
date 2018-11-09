@@ -18,12 +18,13 @@ export class TabprecoComponent implements OnInit {
   matDataSource;
   arrDataSource; // TODO tem que ter um jeito de resolver isso ...
   jsonDataSource;
+  frmFilter;
   displayedColumns: string[] = ['codigo', 'descricao', 'alt', 'larg', 'prof', 'volume', 'peso', 'cub', 'preco', 'img'];
   // displayedColumns: string[] = ['codigo', 'preco'];
 
   // MatPaginator Inputs
   length = 0;
-  pageSize = 10;
+  pageSize = 3;
   pageSizeOptions: number[] = [5, 10, 25, 50, 100, 9999];
 
   // MatPaginator Output
@@ -43,9 +44,13 @@ export class TabprecoComponent implements OnInit {
   }
 
   getTotal() {
+    if (this.arrDataSource) {
     return this.arrDataSource
       .map(t => t.preco)
       .reduce((acc, value) => acc + value, 0);
+    } else {
+      return 0;
+    }
   }
 
   rowClick(row) {
@@ -58,8 +63,17 @@ export class TabprecoComponent implements OnInit {
 
   constructor(private tabprecoservice: TabprecoService) { }
 
+  async delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms));
+  }
+
   ngOnInit() {
+    /*
+    setInterval(() => {
       this.btnGetData();
+    }, 2000);
+    */
+    this.btnGetData();
   }
 
   btnGetData() {
@@ -72,10 +86,11 @@ export class TabprecoComponent implements OnInit {
        } else {
         this.arrDataSource = res;
         this.matDataSource = new MatTableDataSource(res);
-        this.jsonDataSource = JSON.stringify(this.matDataSource);
+        // this.jsonDataSource = JSON.stringify(this.matDataSource);
         this.length = res.length;
         this.matDataSource.sort = this.sort;
         this.matDataSource.paginator = this.paginator;
+        this.delay(5000);
        }
      });
   }
@@ -85,6 +100,11 @@ export class TabprecoComponent implements OnInit {
     this.length = 0;
     this.matDataSource.sort = this.sort;
     this.matDataSource.paginator = this.paginator;
+}
+
+btnClearSearch() {
+  this.frmFilter = '';
+  this.applyFilter('');
 }
 
 }

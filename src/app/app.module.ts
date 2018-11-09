@@ -3,6 +3,7 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 // Meus templates ...
@@ -11,7 +12,7 @@ import { TabprecolinhasComponent } from './tabprecolinhas/tabprecolinhas.compone
 
 // Material ...
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule, MatSortModule, MatInputModule } from '@angular/material';
+import { MatTableModule, MatSortModule, MatInputModule, MatIconModule, MatProgressSpinnerModule } from '@angular/material';
 import { MatPaginatorModule } from '@angular/material/paginator';
 // import { MatTableDataSource } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -28,7 +29,6 @@ import { FlxUiDatatableModule, FlxUiDataTable } from 'flx-ui-datatable';
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
 import { Page404Component } from './page404/page404.component';
-import { ConsultaPadraoComponent } from './consulta-padrao/consulta-padrao.component';
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -36,17 +36,16 @@ registerLocaleData(ptBr);
     AppComponent,
     TabprecoComponent,
     TabprecolinhasComponent,
-    Page404Component,
-    ConsultaPadraoComponent
-    // MatTableDataSource
+    Page404Component
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule, FormsModule,
     MatTableModule, MatSortModule, MatInputModule, MatCardModule, MatPaginatorModule, MatFormFieldModule, MatButtonModule,
-    MatGridListModule, MatSliderModule,
+    MatGridListModule, MatSliderModule, MatIconModule, MatProgressSpinnerModule,
     FlxUiDatatableModule,
     CdkTableModule
    ],
