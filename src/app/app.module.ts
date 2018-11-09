@@ -28,7 +28,7 @@ import { FlxUiDatatableModule, FlxUiDataTable } from 'flx-ui-datatable';
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
 import { Page404Component } from './page404/page404.component';
-import { ConsultaPadraoComponent } from './consulta-padrao/consulta-padrao.component';
+// import { ConsultaPadraoComponent } from './consulta-padrao/consulta-padrao.component';
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -36,8 +36,7 @@ registerLocaleData(ptBr);
     AppComponent,
     TabprecoComponent,
     TabprecolinhasComponent,
-    Page404Component,
-    ConsultaPadraoComponent
+    Page404Component
     // MatTableDataSource
   ],
   imports: [
