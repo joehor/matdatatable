@@ -1,8 +1,9 @@
 1. Adicionar os rowspans nos no tabpreco.
    -
 2. Prever alinhamento a direita se o valor for numerico.
-   - isNaN resolve...
+OK - isNaN criado a funcao alignText...
 3. Criar um datatable generico para usar a consulta padrao.
-   - Ok! mas precisa remover colunas marcadas como ocultas nas consultas ...
+OK - Mas precisa remover colunas marcadas como ocultas nas consultas.
 4. Aplicar a internacionalização que ainda nao deu certo
-   - 
+OK - Criado um provider para traduzir a paginação.
+5. Aplicar estilos de formatação nos campos.

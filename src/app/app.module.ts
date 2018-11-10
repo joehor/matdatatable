@@ -21,6 +21,8 @@ import { MatSliderModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 import { DataSource } from '@angular/cdk/collections';
 
+import { getBrasilianPaginatorIntl } from './brasilian-paginator-Intl';
+
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
 import { Page404Component } from './page404/page404.component';
@@ -45,7 +47,8 @@ registerLocaleData(ptBr);
     CdkTableModule
    ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'pt' }
+    { provide: LOCALE_ID, useValue: 'pt' },
+    { provide: MatPaginatorIntl, useValue: getBrasilianPaginatorIntl() }
   ],
   bootstrap: [AppComponent]
 })

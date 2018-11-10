@@ -66,6 +66,22 @@ export class TabprecoComponent implements OnInit {
     alert(col + ' : ' + codigo);
   }
 
+  alignText(val) {
+    if (isNaN(parseFloat(val))) {
+      return '';
+    } else {
+      return 'alr';
+    }
+  }
+
+  maskText(r, c) {
+    if (c === 'preco' ) {
+      return `${r[c]} | currency`;
+    } else {
+      return r[c];
+    }
+  }
+
   constructor(private tabprecoservice: TabprecoService) { }
 
   async delay(ms: number) {

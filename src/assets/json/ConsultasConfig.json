@@ -1,0 +1,13 @@
+[
+    {
+        "params": [
+            {"nome": "codigo", "display": "Código", "type": "integer", "mask": "#0"}        
+        ]
+    },
+    {
+        "columns": [
+             {"nome": "codigo", "display": "Código",  "type": "integer"}
+            ,{"nome": "descricao", "display": "Descrição", "type": "string"}
+        ]
+    }
+]

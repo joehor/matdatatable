@@ -33,7 +33,11 @@
 <!-- agora com colunas automaticas ... -->
             <ng-container *ngFor="let col of displayedColumns" matColumnDef="{{ col }}">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ col }} </th>
-                <td mat-cell *matCellDef="let row" (click)="rowClick((row),(col), 'codigo')"> {{ row[col] }} </td>
+                <td mat-cell *matCellDef="let row" 
+                    [ngClass]="alignText(row[col])" 
+                    (click)="rowClick((row),(col), 'codigo')"> 
+                    <!-- {{ maskText(row, col) }} </td> -->
+                    {{ row[col] }}
                 <td mat-footer-cell *matFooterCellDef>  </td>
             </ng-container>
 <!--
