@@ -10,15 +10,9 @@
 
         <div style="display: flex; flex-wrap: wrap;">
             <mat-form-field>
-<<<<<<< HEAD
-                <input matInput [(ngModel)]="frmFilter" (keyup)="applyFilter($event.target.value)" placeholder="Pesquisar">
-                <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="frmFilter" (click)="btnClearSearch()">
-                    <mat-icon>x</mat-icon>
-=======
                 <input matInput [(ngModel)]="searchText" (keyup)="applyFilter($event.target.value)" placeholder="Pesquisar">
                 <button mat-button matSuffix mat-icon-button [ngClass]="(searchText==='')?'hide':'show'">
                   <mat-icon (click)="btnSearchClear()">x</mat-icon>
->>>>>>> 772ba270d83fa79fa3386437ca295ed6fcbce100
                 </button>
             </mat-form-field>
 
@@ -36,134 +30,76 @@
     <mat-card>
 
         <table mat-table [dataSource]="matDataSource" matSort>
+<!-- agora com colunas automaticas ... -->
+            <ng-container *ngFor="let col of displayedColumns" matColumnDef="{{ col }}">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ col }} </th>
+                <td mat-cell *matCellDef="let row" (click)="rowClick((row),(col), 'codigo')"> {{ row[col] }} </td>
+                <td mat-footer-cell *matFooterCellDef>  </td>
+            </ng-container>
+<!--
             <ng-container matColumnDef="codigo">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Código</th>
-<<<<<<< HEAD
-                <td mat-cell *matCellDef="let row"> {{ row.codigo }} </td>
-                <td mat-footer-cell *matFooterCellDef></td>
-                <td mat-footer-cell *matFooterCellDef></td>
-            </ng-container>
-            <ng-container matColumnDef="descricao">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</th>
-                <td mat-cell *matCellDef="let row"> {{ row.descricao }} </td>
-                <td mat-footer-cell *matFooterCellDef></td>
-                <td mat-footer-cell *matFooterCellDef></td>
-=======
                 <td mat-cell *matCellDef="let row" (click)="rowClick()"> {{ row.codigo }} </td>
                 <td mat-footer-cell *matFooterCellDef> Total: </td>
-              </ng-container>
+            </ng-container>
             <ng-container matColumnDef="descricao">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</th>
                 <td mat-cell *matCellDef="let row"> {{ row.descricao }} </td>
                 <td mat-footer-cell *matFooterCellDef> </td>
->>>>>>> 772ba270d83fa79fa3386437ca295ed6fcbce100
             </ng-container>
             <ng-container matColumnDef="alt">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Alt</th>
                 <td mat-cell *matCellDef="let row" class="hidden-xs"> {{ row.alt }} </td>
-<<<<<<< HEAD
-                <td mat-footer-cell *matFooterCellDef></td>
-                <td mat-footer-cell *matFooterCellDef></td>
-=======
                 <td mat-footer-cell *matFooterCellDef class="hidden-xs"> </td>
->>>>>>> 772ba270d83fa79fa3386437ca295ed6fcbce100
             </ng-container>
             <ng-container matColumnDef="larg">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Larg.</th>
                 <td mat-cell *matCellDef="let row" class="hidden-xs"> {{ row.larg }} </td>
-<<<<<<< HEAD
-                <td mat-footer-cell *matFooterCellDef></td>
-                <td mat-footer-cell *matFooterCellDef></td>
-=======
                 <td mat-footer-cell *matFooterCellDef class="hidden-xs"> </td>
->>>>>>> 772ba270d83fa79fa3386437ca295ed6fcbce100
             </ng-container>
             <ng-container matColumnDef="prof">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Prof.</th>
                 <td mat-cell *matCellDef="let row" class="hidden-xs"> {{ row.prof }} </td>
-<<<<<<< HEAD
-                <td mat-footer-cell *matFooterCellDef></td>
-                <td mat-footer-cell *matFooterCellDef></td>
-=======
                 <td mat-footer-cell *matFooterCellDef class="hidden-xs"> </td>
->>>>>>> 772ba270d83fa79fa3386437ca295ed6fcbce100
             </ng-container>
             <ng-container matColumnDef="volume">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Vol.</th>
                 <td mat-cell *matCellDef="let row" class="hidden-xs"> {{ row.volume }} </td>
-<<<<<<< HEAD
-                <td mat-footer-cell *matFooterCellDef></td>
-                <td mat-footer-cell *matFooterCellDef></td>
-=======
                 <td mat-footer-cell *matFooterCellDef class="hidden-xs"> </td>
->>>>>>> 772ba270d83fa79fa3386437ca295ed6fcbce100
             </ng-container>
             <ng-container matColumnDef="peso">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Peso</th>
                 <td mat-cell *matCellDef="let row" class="hidden-xs"> {{ row.peso }} </td>
-<<<<<<< HEAD
-                <td mat-footer-cell *matFooterCellDef></td>
-                <td mat-footer-cell *matFooterCellDef></td>
-=======
                 <td mat-footer-cell *matFooterCellDef class="hidden-xs"> </td>
->>>>>>> 772ba270d83fa79fa3386437ca295ed6fcbce100
             </ng-container>
             <ng-container matColumnDef="cub">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Cub.</th>
                 <td mat-cell *matCellDef="let row" class="hidden-xs"> {{ row.cub }} </td>
-<<<<<<< HEAD
-                <td mat-footer-cell *matFooterCellDef></td>
-                <td mat-footer-cell *matFooterCellDef></td>
-=======
                 <td mat-footer-cell *matFooterCellDef class="hidden-xs"> </td>
->>>>>>> 772ba270d83fa79fa3386437ca295ed6fcbce100
             </ng-container>
             <ng-container matColumnDef="preco">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Preço</th>
                 <td mat-cell *matCellDef="let row"> {{ row.preco | currency: 'BRL' }} </td>
-<<<<<<< HEAD
-                <td mat-footer-cell *matFooterCellDef> {{ getTotal() | currency: 'BRL' }} </td>
-                <td mat-footer-cell *matFooterCellDef></td>
-=======
                 <td mat-footer-cell *matFooterCellDef> {{ sumPreco | currency: 'BRL' }} </td>
->>>>>>> 772ba270d83fa79fa3386437ca295ed6fcbce100
             </ng-container>
             <ng-container matColumnDef="img">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="hidden-xs">Prospecto</th>
                 <td mat-cell *matCellDef="let row" class="hidden-xs"> {{ row.img }} </td>
-<<<<<<< HEAD
-                <td mat-footer-cell *matFooterCellDef></td>
-                <td mat-footer-cell *matFooterCellDef></td>
-            </ng-container>
-
-            <ng-container matColumnDef="loading">
-                <td mat-footer-cell *matFooterCellDef>
-                    <!-- <mat-progress-spinner color="primary" mode="indeterminate" value="50"></mat-progress-spinner> -->
-                    <mat-spinner></mat-spinner>
-                Carregando ...
-                </td>
-=======
                 <td mat-footer-cell *matFooterCellDef class="hidden-xs">  </td>
             </ng-container>
-
+-->
             <ng-container matColumnDef="loadingdata">
               <td mat-footer-cell *matFooterCellDef colspan="10" [ngClass]="{'hide':cntRow>0}"> Carregando ... </td>
             </ng-container>
             <ng-container matColumnDef="nodata">
               <td mat-footer-cell *matFooterCellDef colspan="10" class="hide" [ngClass]="{'':cntRow===0}"> Nenhum registro encontrado ... </td>
->>>>>>> 772ba270d83fa79fa3386437ca295ed6fcbce100
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-<<<<<<< HEAD
-            <tr mat-footer-row *matFooterRowDef="['preco']"></tr>
-            <tr mat-footer-row *matFooterRowDef="['loading']"></tr>
-=======
             <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
             <tr mat-footer-row *matFooterRowDef="['loadingdata']" [ngClass]="{'hide':cntRow>0}"></tr>
             <tr mat-footer-row *matFooterRowDef="['nodata']" class="hide" [ngClass]="{'':cntRow===0}"></tr>
->>>>>>> 772ba270d83fa79fa3386437ca295ed6fcbce100
         </table>
     </mat-card>
 </div>

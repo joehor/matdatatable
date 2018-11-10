@@ -21,8 +21,10 @@ export class TabprecoComponent implements OnInit {
   sumPreco;
   cntRow = 0;
   searchText = '';
-  displayedColumns: string[] = ['codigo', 'descricao', 'alt', 'larg', 'prof', 'volume', 'peso', 'cub', 'preco', 'img'];
-  // displayedColumns: string[] = ['codigo', 'preco'];
+
+  // agora com colunas automaticas ...
+  // displayedColumns: string[] = ['codigo', 'descricao', 'alt', 'larg', 'prof', 'volume', 'peso', 'cub', 'preco', 'img'];
+  displayedColumns: string[];
 
   // MatPaginator Inputs
   length = 0;
@@ -47,31 +49,17 @@ export class TabprecoComponent implements OnInit {
 
   getTotal() {
     if (this.arrDataSource) {
-    return this.arrDataSource
-      .map(t => t.preco)
-      .reduce((acc, value) => acc + value, 0);
+      console.log('Calculando o subtotal...');
+      this.sumPreco = this.arrDataSource
+        .map(t => t.preco)
+        .reduce((acc, value) => acc + value, 0);
     } else {
       return 0;
     }
-    console.log('Calculando o subtotal...');
-    this.sumPreco = this.arrDataSource
-      .map(t => t.preco)
-      .reduce((acc, value) => acc + value, 0);
-  /*
-   console.log(this.arrDataSource);
-   if (this.arrDataSource === 'undefined') {
-      return this.arrDataSource
-      .map()
-      .reduce((acc, value) => acc.preco + value.preco, 0);
-   } else {
-     return 0;
-   }
-   */
   }
 
-  rowClick(row) {
-    alert(row);
-    console.log('sumPreco: ' + this.sumPreco);
+  rowClick(r, c, k) {
+    alert(c + ': ' + r[c] + ' na pk: ' + r[k] + ' o campo ' + c + ' é numérico? ' + !isNaN(parseFloat(r[c])) );
   }
 
   colClick(col, codigo) {
@@ -104,6 +92,21 @@ export class TabprecoComponent implements OnInit {
         this.arrDataSource = res;
         this.cntRow = res.length;
         this.matDataSource = new MatTableDataSource(res);
+
+        // teste funciona?
+        // console.log('Vai converter?');
+        // this.arrDataSource = JSON.parse(this.matDataSource);
+        // console.log('converteu?');
+
+        // agora com colunas automaticas ...
+        this.displayedColumns = Object.keys(res[0]);
+
+        // remove os dois últimos campos que não devem ser exibidos - TODO
+        // this.displayedColumns.pop();
+        // this.displayedColumns.pop();
+
+        console.log(this.displayedColumns);
+
         // this.jsonDataSource = JSON.stringify(this.matDataSource);
         this.length = res.length;
         this.matDataSource.sort = this.sort;

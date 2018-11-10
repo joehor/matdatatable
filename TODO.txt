@@ -1,6 +1,8 @@
 1. Adicionar os rowspans nos no tabpreco.
    -
-2. Prever alinhamento à direita se o valor for numérico.
-   -
-3. Criar um datatable genérico para usar a consulta padrão.
+2. Prever alinhamento a direita se o valor for numerico.
+   - isNaN resolve...
+3. Criar um datatable generico para usar a consulta padrao.
+   - Ok! mas precisa remover colunas marcadas como ocultas nas consultas ...
+4. Aplicar a internacionalizaÃ§Ã£o que ainda nao deu certo
    - 
