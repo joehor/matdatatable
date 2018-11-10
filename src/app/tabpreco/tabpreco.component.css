@@ -10,6 +10,15 @@ tr.mat-footer-row {
     font-weight: bold;
 }
 
+.cdk-column-loadingdata,
+.cdk-column-nodata {
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+
 @media screen and (max-width: 600px) {
     .hidden-xs {
         display:none;

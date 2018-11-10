@@ -1,0 +1,6 @@
+1. Adicionar os rowspans nos no tabpreco.
+   -
+2. Prever alinhamento à direita se o valor for numérico.
+   -
+3. Criar um datatable genérico para usar a consulta padrão.
+   - 

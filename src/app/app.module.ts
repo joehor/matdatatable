@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 // Meus templates ...
@@ -12,7 +11,7 @@ import { TabprecolinhasComponent } from './tabprecolinhas/tabprecolinhas.compone
 
 // Material ...
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule, MatSortModule, MatInputModule, MatIconModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatTableModule, MatSortModule, MatInputModule, MatPaginatorIntl, MatIconModule } from '@angular/material';
 import { MatPaginatorModule } from '@angular/material/paginator';
 // import { MatTableDataSource } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -42,10 +41,11 @@ registerLocaleData(ptBr);
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule, FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule, FormsModule,
     MatTableModule, MatSortModule, MatInputModule, MatCardModule, MatPaginatorModule, MatFormFieldModule, MatButtonModule,
-    MatGridListModule, MatSliderModule, MatIconModule, MatProgressSpinnerModule,
+    MatGridListModule, MatSliderModule, MatIconModule,
     FlxUiDatatableModule,
     CdkTableModule
    ],
