@@ -13,7 +13,6 @@ import { TabprecolinhasComponent } from './tabprecolinhas/tabprecolinhas.compone
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule, MatSortModule, MatInputModule, MatPaginatorIntl, MatIconModule } from '@angular/material';
 import { MatPaginatorModule } from '@angular/material/paginator';
-// import { MatTableDataSource } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,9 +20,6 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSliderModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 import { DataSource } from '@angular/cdk/collections';
-
-// FlexUiDataTable
-import { FlxUiDatatableModule, FlxUiDataTable } from 'flx-ui-datatable';
 
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
@@ -46,12 +42,10 @@ registerLocaleData(ptBr);
     ReactiveFormsModule, FormsModule,
     MatTableModule, MatSortModule, MatInputModule, MatCardModule, MatPaginatorModule, MatFormFieldModule, MatButtonModule,
     MatGridListModule, MatSliderModule, MatIconModule,
-    FlxUiDatatableModule,
     CdkTableModule
    ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'pt' },
-    FlxUiDataTable
+    { provide: LOCALE_ID, useValue: 'pt' }
   ],
   bootstrap: [AppComponent]
 })
