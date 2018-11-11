@@ -5,7 +5,8 @@ import { TabprecolinhasComponent } from './tabprecolinhas/tabprecolinhas.compone
 import { Page404Component } from './page404/page404.component';
 
 const routes: Routes = [
-  { path: '', component: TabprecoComponent },
+  { path: '', component: TabprecolinhasComponent },
+  { path: 'tabpreco/:linha', component: TabprecoComponent },
   { path: 'linhas', component: TabprecolinhasComponent },
   { path: '**', component: Page404Component },
 ];

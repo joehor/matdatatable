@@ -1,0 +1,11 @@
+[
+    {"codigo": 1, "descricao": "OFFICE VERSATIL", "tabela": 34, "mercado": "I"},
+    {"codigo": 18, "descricao": "DORMITORIO GOLD", "tabela": 34, "mercado": "I"},
+    {"codigo": 44, "descricao": "COLCHÃO SONOLEV", "tabela": 34, "mercado": "I"},
+    {"codigo": 47, "descricao": "DORMITORIO M. SMART", "tabela": 34, "mercado": "I"},
+    {"codigo": 65, "descricao": "COZINHA 14 VERSATTI", "tabela": 34, "mercado": "I"},
+    {"codigo": 79, "descricao": "COZINHA 15 SOLARIS", "tabela": 34, "mercado": "I"},
+    {"codigo": 86, "descricao": "COZINHA 16 NEW URBAN", "tabela": 34, "mercado": "I"},
+    {"codigo": 98, "descricao": "ESTOFADOS ESTAR", "tabela": 33, "mercado": "I"},
+    {"codigo": 112, "descricao": "KAPPESBERG POP COZ.", "tabela": 33, "mercado": "I"}
+]

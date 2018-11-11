@@ -38,7 +38,7 @@
                     (click)="rowClick((row),(col), 'codigo')"> 
                     <!-- {{ maskText(row, col) }} </td> -->
                     {{ row[col] }}
-                <td mat-footer-cell *matFooterCellDef>  </td>
+                <td mat-footer-cell *matFooterCellDef class="alr"> {{ applySum(col) }} </td>
             </ng-container>
 <!--
             <ng-container matColumnDef="codigo">

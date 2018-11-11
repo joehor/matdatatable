@@ -3,6 +3,7 @@ import { TabprecoService } from './tabpreco.service';
 // import { Observable } from 'rxjs';
 import { PageEvent } from '@angular/material';
 import { MatPaginator } from '@angular/material/paginator';
+import { ActivatedRoute } from '@angular/router';
 
 // Material
 import { MatSort, MatTableDataSource, MatPaginatorIntl } from '@angular/material';
@@ -76,13 +77,24 @@ export class TabprecoComponent implements OnInit {
 
   maskText(r, c) {
     if (c === 'preco' ) {
-      return `${r[c]} | currency`;
+      return 'currency';
     } else {
-      return r[c];
+      return '';
     }
   }
 
-  constructor(private tabprecoservice: TabprecoService) { }
+  applySum(col) {
+    if ( col === 'preco') {
+      return this.sumPreco;
+    } else {
+      return '';
+    }
+  }
+
+  constructor(
+      private tabprecoservice: TabprecoService,
+      private route: ActivatedRoute
+      ) { }
 
   async delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms));
@@ -94,13 +106,14 @@ export class TabprecoComponent implements OnInit {
       this.btnGetData();
     }, 2000);
     */
-    this.btnGetData();
+    this.btnGetData(this.route.snapshot.params.linha);
+
   }
 
-  btnGetData() {
+  btnGetData(linha) {
   // this.matDataSource = this.tabprecoservice.getData();
   // this.matDataSource.sort = this.sort;
-    this.tabprecoservice.getData()
+    this.tabprecoservice.getData(linha)
      .subscribe(res => {
        if (!res) {
         return;

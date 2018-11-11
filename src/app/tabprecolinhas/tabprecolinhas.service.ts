@@ -6,13 +6,12 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class TabprecoService {
-  private serviceUrl = '../../assets/json/tabpreco.json';
+export class TabprecolinhasService {
+  private serviceUrl = '../../assets/json/tabpreco-linhas.json';
 
   constructor(private http: HttpClient) { }
 
-  getData(linha): Observable<Tabpreco[]> {
-    console.log('ServLinha: Voce excolheu: ' + linha);
+  getData(): Observable<Tabpreco[]> {
     return this.http.get<Tabpreco[]>(this.serviceUrl);
   }
 }
