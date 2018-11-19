@@ -1,11 +1,5 @@
 <div>
 
-    <div style="margin: 10px;">
-        <button mat-raised-button color="primary" (click)="btnGetData()">Buscar produtos</button>
-        &nbsp;
-        <button mat-raised-button (click)="btnClearData()">Limpar</button>
-    </div>
-
     <mat-card style="display: flex; justify-content: space-between;">
 
         <div style="display: flex; flex-wrap: wrap;">
@@ -33,9 +27,9 @@
 <!-- agora com colunas automaticas ... -->
             <ng-container *ngFor="let col of displayedColumns" matColumnDef="{{ col }}">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ col }} </th>
-                <td mat-cell *matCellDef="let row" 
-                    [ngClass]="alignText(row[col])" 
-                    (click)="rowClick((row),(col), 'codigo')"> 
+                <td mat-cell *matCellDef="let row"
+                    [ngClass]="alignText(row[col])"
+                    (click)="rowClick((row),(col), 'codigo')">
                     <!-- {{ maskText(row, col) }} </td> -->
                     {{ row[col] }}
                 <td mat-footer-cell *matFooterCellDef class="alr"> {{ applySum(col) }} </td>

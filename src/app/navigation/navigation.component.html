@@ -10,7 +10,7 @@
 
       <button mat-button [matMenuTriggerFor]="menu">
           Acesse também
-          <i class="material-icons md-18">arrow_right</i>
+          <i class="material-icons md-18">arrow_drop_down</i>
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item>Item 1</button>
@@ -31,6 +31,17 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-      <router-outlet></router-outlet>
+      <router-outlet class="container-outlet"></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
+
+<div mat-dialog-content>
+  <p>Modelos por página:</p>
+  <mat-form-field>
+    <input matInput>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="true" (click)="onOptionsSave()">Aplicar Alterações</button>
+  <button mat-button mat-dialog-close cdkFocusInitial>Cancelar</button>
+</div>

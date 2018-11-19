@@ -1,6 +1,7 @@
 mat-card {
-    margin: 10px;
     width: 20em;
+    margin-right: 30px;
+    margin-bottom: 30px;
 }
 
 mat-card-footer {
@@ -21,15 +22,15 @@ mat-card-footer {
     .modal-sm {
         /*max-width: 98%;*/
     }
-    
+
     mat-card {
         /*width: 98%;*/
     }
-    
+
     .hrcard {
         display: "inline-block";
     }
-    
+
     .logo {
         width: 30px;
     }

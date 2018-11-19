@@ -22,4 +22,8 @@ export class NavigationComponent implements OnInit {
     });
     */
   }
+
+  onOptionsSave() {
+    alert('Salvando opções...');
+  }
 }
