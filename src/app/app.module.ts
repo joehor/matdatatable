@@ -9,9 +9,12 @@ import { AppComponent } from './app.component';
 import { TabprecoComponent } from './tabpreco/tabpreco.component';
 import { TabprecolinhasComponent } from './tabprecolinhas/tabprecolinhas.component';
 
+
 // Material ...
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule, MatSortModule, MatInputModule, MatPaginatorIntl, MatIconModule } from '@angular/material';
+import { MatTableModule, MatSortModule, MatInputModule, MatPaginatorIntl,
+  MatIconModule, MatSidenavModule, MatCheckboxModule } from '@angular/material';
+import { CustomMaterialModule } from './core/material.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
@@ -21,11 +24,15 @@ import { MatSliderModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 import { DataSource } from '@angular/cdk/collections';
 
+import 'hammerjs';
+
 import { getBrasilianPaginatorIntl } from './brasilian-paginator-Intl';
 
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
 import { Page404Component } from './page404/page404.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -33,7 +40,9 @@ registerLocaleData(ptBr);
     AppComponent,
     TabprecoComponent,
     TabprecolinhasComponent,
-    Page404Component
+    Page404Component,
+    NavigationComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -42,8 +51,9 @@ registerLocaleData(ptBr);
     ReactiveFormsModule, FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule, FormsModule,
+    CustomMaterialModule,
     MatTableModule, MatSortModule, MatInputModule, MatCardModule, MatPaginatorModule, MatFormFieldModule, MatButtonModule,
-    MatGridListModule, MatSliderModule, MatIconModule,
+    MatGridListModule, MatSliderModule, MatIconModule, MatSidenavModule, MatCheckboxModule,
     CdkTableModule
    ],
   providers: [

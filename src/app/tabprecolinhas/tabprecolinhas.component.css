@@ -1,10 +1,12 @@
-.card {
+mat-card {
     margin: 10px;
     width: 20em;
 }
 
-.card-footer {
+mat-card-footer {
     text-align: center;
+    padding: 20px;
+    background-color: rgba(0,0,0,.03);
 }
 
 .dropdown .dropdown-menu {
@@ -17,11 +19,11 @@
 
 @media (max-width: 630px) {
     .modal-sm {
-        max-width: 100%;
+        /*max-width: 98%;*/
     }
     
-    .card {
-        width: 100%;
+    mat-card {
+        /*width: 98%;*/
     }
     
     .hrcard {
